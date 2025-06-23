@@ -3,7 +3,7 @@ const express = require('express');              // Framework para manejar rutas
 const cors = require('cors');                    // Middleware para permitir peticiones desde otros orígenes (CORS)
 const bodyParser = require('body-parser');       // Permite leer datos del body en peticiones POST (aunque Express ya lo incluye desde v4.16)
 const path = require('path');                    // Módulo de Node.js para trabajar con rutas de archivos
-const nombreRoutes = require('./routes/nombre-routes'); // Importamos las rutas de contactos
+const bloomRoutes = require('./routes/bloom-routes'); // Importamos las rutas de contactos
 
 // Inicializamos Express y definimos el puerto
 const app = express();
@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // === RUTAS DE LA API ===
 // Todas las rutas que empiecen con /api/nombre se manejarán en nombreRoutes.js
-app.use('/api/nombre', nombreRoutes);
+app.use('/API_MAKEUP/', bloomRoutes);
 
 // === RUTA POR DEFECTO (SPA o HTML principal) ===
 // Si el usuario visita la raíz ("/"), se le envía el archivo index.html del frontend
