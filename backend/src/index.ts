@@ -1,36 +1,31 @@
 // Importamos las dependencias necesarias
-const express = require('express');              // Framework para manejar rutas y servidor
-const cors = require('cors');                    // Middleware para permitir peticiones desde otros orígenes (CORS)
-const bodyParser = require('body-parser');       // Permite leer datos del body en peticiones POST (aunque Express ya lo incluye desde v4.16)
-const path = require('path');                    // Módulo de Node.js para trabajar con rutas de archivos
-const bloomRoutes = require('./routes/bloom-routes'); // Importamos las rutas de contactos
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const bloomRoutes = require('./routes/bloom-routes');
 
 // Inicializamos Express y definimos el puerto
 const app = express();
 const PORT = 3000;
 
-// === MIDDLEWARES ===
-// Permite peticiones desde otros dominios
+// Permite peticiones desde otros dominios (CORS)
 app.use(cors());
 
-// Permite recibir JSON en las peticiones
+// Permite recibir JSON en las peticiones POST
 app.use(express.json());
 
-// === SERVIR ARCHIVOS ESTÁTICOS DEL FRONT ===
-// Esto hace que Express sirva archivos como index.html desde la carpeta "public"
+// Servimos archivos estáticos desde la carpeta 'public'
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// === RUTAS DE LA API ===
-// Todas las rutas que empiecen con /api/nombre se manejarán en nombreRoutes.js
-app.use('/API_MAKEUP/', bloomRoutes);
+// Rutas de la API de productos de maquillaje
+app.use('/api/products', bloomRoutes);
 
-// === RUTA POR DEFECTO (SPA o HTML principal) ===
-// Si el usuario visita la raíz ("/"), se le envía el archivo index.html del frontend
+// Página principal: muestra index.html
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
-// === INICIAMOS EL SERVIDOR EN EL PUERTO DEFINIDO ===
+// Iniciamos el servidor en el puerto definido
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en: http://localhost:${PORT}`);
 });

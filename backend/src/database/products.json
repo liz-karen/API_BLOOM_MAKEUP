@@ -1,1 +1,26 @@
-[]
+[
+    {
+      "id": "1",
+      "name": "Labial Mate",
+      "brand": "Maybelline",
+      "price": 12.5,
+      "stock": 30,
+      "category": "labial"
+    },
+    {
+      "id": "2",
+      "name": "Base Luminosa",
+      "brand": "L'Oréal",
+      "price": 18.0,
+      "stock": 20,
+      "category": "base"
+    },
+    {
+      "id": "3",
+      "name": "Rímel Waterproof",
+      "brand": "Essence",
+      "price": 9.99,
+      "stock": 45,
+      "category": "ojos"
+    }
+  ]  
