@@ -7,6 +7,7 @@ const {
 } = require('../controllers/bloom-controllers');
 
 const { validateProduct } = require('../middleware/validate-middleware');
+const {authenticateToken} = require('../middleware/auth-middleware');
 
 const router = express.Router();
 
@@ -14,13 +15,13 @@ const router = express.Router();
 router.get('/', getProducts);
 
 // Ruta para crear un nuevo producto con validación
-router.post('/', validateProduct, createProduct);
+router.post('/', authenticateToken, validateProduct, createProduct);
 
 // Ruta para actualizar un producto existente
-router.put('/:id', validateProduct, updateProduct);
+router.put('/:id', authenticateToken, validateProduct, updateProduct);
 
 // Ruta para eliminar un producto por ID
-router.delete('/:id', deleteProduct);
+router.delete('/:id', authenticateToken, deleteProduct);
 
 // Exportamos el router con CommonJS
 module.exports = router;
