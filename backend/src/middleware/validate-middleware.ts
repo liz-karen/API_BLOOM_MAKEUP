@@ -4,8 +4,8 @@ import { Request, Response, NextFunction } from "express";
 //Validamos el body 
 export function validatePorducts (
     req: Request,
-    res: response,
-    next: NextFuction
+    res: Response,
+    next: NextFunction
 ) 
 {
 //Exraemos las propiedades del body
@@ -17,9 +17,10 @@ if (
     typeof price !== 'number' ||
     typeof stock !== 'number' ||
     typeof category !== 'string'
-) {
+) 
+{
     //Error 404 si es inválido
-    return req.status(400).json({error: 'El producto es inválido' })
+    return res.status(400).json({error: 'El producto es inválido' })
 }
 next();
 }

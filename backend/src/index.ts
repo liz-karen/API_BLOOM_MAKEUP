@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const bloomRoutes = require('./routes/bloom-routes');
+const { errorHandler } = require('./middleware/error-middleware');
 
 // Inicializamos Express y definimos el puerto
 const app = express();
@@ -19,6 +20,9 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Rutas de la API de productos de maquillaje
 app.use('/api/products', bloomRoutes);
+
+//Middleware para encargarse de los errores
+app.use(errorHandler);
 
 // Página principal: muestra index.html
 app.get('/', (req, res) => {
