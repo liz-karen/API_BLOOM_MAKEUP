@@ -1,8 +1,8 @@
-//Middleware - Error
+//Middleware - Error (global)
 import { Request, Response, NextFunction } from "express";
 
-//Vemos los errores
-import function errorHandler(
+//Se exporta la función para poder usarla en index.ts
+export function errorHandler(
     err: any,
     _req: Request,
     res: Response,
@@ -11,7 +11,7 @@ import function errorHandler(
     console.error(err);
 
     //Verficamos si el error esta en el JSON
-    if (err.name === 'SyntaxError' && err.status 400 && 'body in err) {
+    if (err instanceof SyntaxError && 'body' in err) {
         return res.status(400).json({error: 'Error: JSON incorrecto'});
     }
     //Agregamos si se encuentran otro errores
