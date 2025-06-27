@@ -1,3 +1,4 @@
+//Middlewares - Autenticación
 import {Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
@@ -20,7 +21,7 @@ interface jwtPayLoad {
     const authHeader = req.headers['authorization']
 
     //Extraemos la palabra 'bearer' para solo usar el valor del token
-    const token = authHeader && authHeader.split('')[1];
+    const token = authHeader && authHeader.split(' ')[1];
 
     //Usamos error 401 si el token no se envió
     if (!token) {
