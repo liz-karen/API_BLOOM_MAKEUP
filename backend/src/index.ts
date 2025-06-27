@@ -1,9 +1,10 @@
 // Importamos las dependencias necesarias
-const express = require('express');
+const express = require ('express');
 const cors = require('cors');
 const path = require('path');
 const bloomRoutes = require('./routes/bloom-routes');
 const { errorHandler } = require('./middleware/error-middleware');
+
 
 // Inicializamos Express y definimos el puerto
 const app = express();
