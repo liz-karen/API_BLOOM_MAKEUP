@@ -1,36 +1,36 @@
-// Importamos las dependencias necesarias
-const express = require ('express');
+// Importamos dependencias necesarias
+const express = require('express');
 const cors = require('cors');
 const path = require('path');
+
+// Importamos las rutas de productos
 const bloomRoutes = require('./routes/bloom-routes');
-const { errorHandler } = require('./middleware/error-middleware');
 
+// Importamos el middleware global de errores
+const { errorHandler } = require('./middleware/error-handler');
 
-// Inicializamos Express y definimos el puerto
 const app = express();
 const PORT = 3000;
 
-// Permite peticiones desde otros dominios (CORS)
+// Middleware para habilitar CORS y parsear JSON
 app.use(cors());
-
-// Permite recibir JSON en las peticiones POST
 app.use(express.json());
 
-// Servimos archivos estáticos desde la carpeta 'public'
+// Servimos archivos estáticos desde /public
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// Rutas de la API de productos de maquillaje
+// Definimos la ruta base para la API de productos
 app.use('/api/products', bloomRoutes);
 
-//Middleware para encargarse de los errores
-app.use(errorHandler);
-
-// Página principal: muestra index.html
-app.get('/', (req, res) => {
+// Ruta raíz que sirve el index.html del frontend
+app.get('/', (_req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
-// Iniciamos el servidor en el puerto definido
+// Middleware global para manejar errores
+app.use(errorHandler);
+
+// Iniciamos el servidor
 app.listen(PORT, () => {
-  console.log(`Servidor escuchando en: http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

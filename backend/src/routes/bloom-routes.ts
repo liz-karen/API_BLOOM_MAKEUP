@@ -1,27 +1,28 @@
-const expressModule = require('express'); // evitamos conflicto de nombre
+const expressModule = require('express');
+
 const {
-  getProducts,
-  createProduct,
-  updateProduct,
-  deleteProduct
+  getAll,
+  add,
+  update,
+  remove
 } = require('../controllers/bloom-controllers');
 
 const { validateProduct } = require('../middleware/validate-middleware');
-const {authenticateToken} = require('../middleware/auth-middleware');
+const { authenticateToken } = require('../middleware/auth-middleware');
 
-const router = express.Router();
+const router = expressModule.Router();
 
-// Ruta para obtener todos los productos o filtrar por nombre
-router.get('/', getProducts);
+// Obtener todos los productos o filtrar por nombre (si aplicás luego)
+router.get('/', getAll);
 
-// Ruta para crear un nuevo producto con validación
-router.post('/', authenticateToken, validateProduct, createProduct);
+// Crear un nuevo producto con autenticación y validación
+router.post('/', authenticateToken, validateProduct, add);
 
-// Ruta para actualizar un producto existente
-router.put('/:id', authenticateToken, validateProduct, updateProduct);
+// Actualizar un producto existente
+router.put('/:id', authenticateToken, validateProduct, update);
 
-// Ruta para eliminar un producto por ID
-router.delete('/:id', authenticateToken, deleteProduct);
+// Eliminar un producto por ID
+router.delete('/:id', authenticateToken, remove);
 
-// Exportamos el router con CommonJS
+// Exportamos el router
 module.exports = router;
