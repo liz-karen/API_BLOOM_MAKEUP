@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const filePath = path.join(__dirname, '../../database/products.json');
+const filePath = path.join(__dirname, '../database/products.json');
 
 // Leemos y devolvemos todos los productos
 export const getAllProducts = () => {
