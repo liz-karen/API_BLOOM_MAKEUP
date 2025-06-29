@@ -24,7 +24,11 @@ app.use(cors());
 app.use(express.json());
 
 // Servimos archivos estáticos desde /public
-app.use(express.static(path.join(__dirname, '..', 'public')));
+// Ruta absoluta desde el directorio raíz
+const publicPath = path.resolve(__dirname, '../../public');
+app.use(express.static(publicPath));
+
+//app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Definimos la ruta base para la API de productos
 app.use('/api/products', bloomRoutes);
