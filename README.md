@@ -52,12 +52,12 @@ npm run dev       # Ejecutar en desarrollo
 npm run build     # Compilar TypeScript
 npm start         # Ejecutar la versión compilada
 
-💻 Frontend simple
+##  💻 Frontend simple
 Accedé desde:
 🔹 http://localhost:3000
 🔹 https://api-bloom-makeup.onrender.com
 
-✨ Autores
+##  ✨ Autores
 Trabajo integrador realizado con fines educativos.
 Autora: Liz Karen Quero
 Autora: Andrea Kowtun
