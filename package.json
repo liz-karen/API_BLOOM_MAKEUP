@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only backend/src/index.ts"
+    "dev": "ts-node-dev --project backend/tsconfig.json --respawn --transpile-only backend/src/index.ts"
   },
   "keywords": [],
   "author": "",
