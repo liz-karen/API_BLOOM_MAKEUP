@@ -27,13 +27,13 @@ export const addProduct = (productData: any) => {
 // Buscamos un producto por su ID 
 export const findProductById = (id: number) => {
   const products = getAllProducts();
-  return products.find(p => p.id === id);
+  return products.find((p: any) => p.id === id);
 };
 
 // Actualizamos los campos de un producto por ID
 export const updateProduct = (id: number, updatedFields: any) => {
   const products = getAllProducts();
-  const index = products.findIndex(p => p.id === id);
+  const index = products.findIndex((p: any) => p.id === id);
   if (index === -1) return null;
   products[index] = { ...products[index], ...updatedFields };
   saveProducts(products);
@@ -43,7 +43,7 @@ export const updateProduct = (id: number, updatedFields: any) => {
 // Eliminamos un producto por su ID
 export const deleteProduct = (id: number) => {
   const products = getAllProducts();
-  const filtered = products.filter(p => p.id !== id);
+  const filtered = products.filter((p: any) => p.id !== id);
   if (filtered.length === products.length) return false;
   saveProducts(filtered);
   return true;
