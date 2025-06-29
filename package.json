@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --project backend/tsconfig.json --respawn --transpile-only backend/src/index.ts",
-    "build":"tsc -p backend/tsconfig.json && xcopy /E /I /Y backend\\src\\database backend\\dist\\database",
+    "build":"tsc -p backend/tsconfig.json && cp -r backend/src/database backend/dist/database",
     "start": "node backend/dist/index.js"
 
   },
